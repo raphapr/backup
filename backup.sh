@@ -22,8 +22,8 @@ LOG=/home/raphael/.backup.log
 
 sudo rsync --delete -avzP -e ssh --log-file=$LOG /etc $DIR
 sudo rsync --delete -avzP -e ssh --log-file=$LOG ~/.config $DIR/raphael
-sudo rsync --delete -avzP -e ssh --log-file=$LOG /var/cache/pacman/pkg-yaourt $DIR/var
-sudo rsync --delete -avzP -e ssh --log-file=$LOG /var/cache/pacman/yaourtbuild $DIR/var
+sudo rsync --delete -avzP -e ssh --log-file=$LOG /usr/share $DIR/usr/share
+sudo rsync --delete -avzP -e ssh --log-file=$LOG /usr/local $DIR/usr/local
 pacman -Qqe | grep -v "$(pacman -Qqm)" > pkglist-of && scp pkglist-of $DIR && rm -rf pkglist-of         # Cria uma lista dos pacotes oficiais instalados no sistema
 pacman -Qqm > pkglist-loc && scp pkglist-loc $DIR && sudo rm -rf pkglist-loc                            # Cria uma lista dos pacotes locais, inclui os instalados do AUR
 scp ~/.backup.log $DIR/backup.log
